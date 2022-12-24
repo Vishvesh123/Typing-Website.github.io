@@ -1,0 +1,56 @@
+h1{
+  font-size: 50px;
+  color: black;
+  font-family: 'Dancing Script', cursive;
+font-family: 'Rubik Gemstones', cursive;
+text-align: center;
+padding: 50px;
+}
+
+
+body{
+  background-image: url("https://cdn.dribbble.com/users/2008861/screenshots/15526868/media/75d00bc49c493701ec1a0cd51da86a8e.gif");
+   /* background-color:rgb(144, 14, 151); */
+}
+.randomtext{
+  background-color: rgb(191, 198, 235);
+}
+#msg{
+  font-family: 'Dancing Script', cursive;
+font-family: 'Fredoka One', cursive;
+font-size: 20px;
+text-align: center;
+}
+ #btn{
+  margin: 72px;
+  border-color: pink;
+  border-radius: 8px;
+  background-color: #00ff1382;
+  margin-top: 300px;
+  margin-left: 500px;
+  padding: 5px 20px 5px 20px ;
+}
+
+textarea{
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 150px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 1px rgba(219, 83, 83, 0.5);
+  background-color: rgb(47, 41, 41);
+  color: white;
+
+  font-family: 'Dancing Script', cursive;
+font-family: 'Fredoka One', cursive;
+
+}
+.times{
+  background-color: #6a6be9fa;
+  width: 160px;
+  display: inline-block;
+  margin-left: 500px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+}

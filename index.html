@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Run Your Fingers</title>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-
+ KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity=
+"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Rubik+Gemstones&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link
+ href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredoka+One&display=swap" rel="stylesheet">
+
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <a class="navbar-brand" href="#">TypingSpeed</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sign%20up">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">History</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+<h1>Run Your Fingers</h1>
+
+<div class="randomtext">
+  <p id="msg"></p>
+</div>
+<div id="timer"></div>
+<div class="container">
+  <div class="times">
+    <h3 id="time">time</h3>
+  </div>
+  <br>
+    <textarea id="mywords" cols="100" rows="7" placeholder="Type faster! But Accurate."  onclick="time()"></textarea>
+    <br>
+    <button id="btn">TEST</button>
+</div>
+
+
+
+
+
+
+
+<!-- ------JAVASCRIPT Functionality----- -->
+
+<script>
+const text=["There was a time and a place for Stephanie to use her magic. The problem was that she had a difficult time determining this. She wished she could simply use it when the desire hit and there wouldn't be any unforeseen consequences. Unfortunately, that's not how it worked and the consequences could be devastating if she accidentally used her magic at the wrong time.",
+            "It was difficult to explain to them how the diagnosis of certain death had actually given him life. While everyone around him was in tears and upset, he actually felt more at ease. The doctor said it would be less than a year. That gave him a year to live, something he'd failed to do with his daily drudgery of a routine that had passed as life until then.",
+              "Ten more steps. If he could take ten more steps it would be over, but his legs wouldn't move. He tried to will them to work, but they wouldn't listen to his brain. Ten more steps and it would be over but it didn't appear he would be able to do it.",
+               "It was a simple tip of the hat. Grace didn't think that anyone else besides her had even noticed it. It wasn't anything that the average person would notice, let alone remember at the end of the day. That's why it seemed so unbelievable that this little gesture would ultimately change the course of the world.",
+                "Sarah watched the whirlpool mesmerized. She couldn't take her eyes off the water swirling around and around. She stuck in small twigs and leaves to watch the whirlpool catch them and then suck them down. It bothered her more than a little bit that this could also be used as a metaphor for her life."
+              ];
+
+const msg=document.getElementById('msg');
+const typeWords=document.getElementById('mywords');
+const btn=document.getElementById('btn');
+
+
+const playGame=()=>{
+  let randomIndex=Math.floor(Math.random()*text.length);
+  msg.innerText=text[randomIndex];
+}
+
+const endGame=()=>{
+  let totalStr=typeWords.value;
+  let wordCount=wordCounter(totalStr);
+
+  let finalMsg="You typed total at "+wordCount+" Words Per Minuites";
+
+  finalMsg+=compareWords(msg.innerText,totalStr);
+  msg.innerText=finalMsg;
+}
+
+const compareWords=(str1,str2)=>{
+let word1=str1.split(" ");
+let word2=str2.split(" ");
+let cnt = 0;
+
+ word1.forEach(function(item,index){
+  if(item==word2[index]){
+    cnt++;
+  }
+ });
+
+ let errorWords=(word2.length-cnt);
+ return (" And "+(100-(errorWords/word2.length)*100)+"% Accuracy");
+}
+
+const wordCounter=(str)=>{
+  if(str==""){
+ return (0);
+ }else{
+  let response=str.split(" ").length;
+  return response;
+  }
+}
+
+btn.addEventListener('click',function(){
+    typeWords.disabled=false;
+    playGame();
+})
+
+function time(){
+ var time=60;
+  setInterval(myTime,1000)
+ function myTime(){
+   if(time>=0 && time<=60){
+     document.getElementById("time").innerHTML = time +'seconds';
+     time--;
+
+   }
+   if(time<0){
+     endGame();
+     time=62;
+   }
+
+   }
+ }
+
+
+</script>
+
+</body>
+
+</html>
